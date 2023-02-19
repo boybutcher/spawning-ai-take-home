@@ -3,6 +3,7 @@ import products from './constants/products.json'
 
 import ProductTile from './ProductTile.js'
 import CartModal from './CartModal.js'
+import SearchBar from './SearchBar.js'
 
 import Button from 'react-bootstrap/Button'
 
@@ -16,9 +17,9 @@ function App() {
   const [renderCart, setRenderCart] = useState(false)
   const [cart, setCart] = useState([])
 
-  // get initial products on render
+  const [productQuery, setProductQuery] = useState('');
+
   useEffect(() => {
-    console.log('settingRenderedProducts...')
     setRenderedProducts(products.slice(0, renderCount))
   }, [])
 
@@ -28,15 +29,33 @@ function App() {
 
   const hideCart = () => setRenderCart(false)
 
+  const filterProducts = () => {
+    console.log('filtering products...', {productQuery})
+  }
+
   return (
     <div className="App">
-      {renderCart ? <CartModal cartItems={cart} handleClose={hideCart} /> : null}
+      {renderCart ? (
+        <CartModal
+          cartItems={cart}
+          handleClose={hideCart}
+        />) : null}
       <Button onClick={() => setRenderCart(true)}>
         cart ({cart.length} items)
       </Button>
+      <SearchBar
+        updateQuery={setProductQuery}
+        queryVal={productQuery}
+        filterProducts={filterProducts}
+      />
       {
         renderedProducts.map(productData => {
-          return (<ProductTile productData={productData} addItemToCart={addItemToCart}/>)
+          return (
+            <ProductTile
+              productData={productData}
+              addItemToCart={addItemToCart}
+            />
+          )
         })
       }
     </div>
