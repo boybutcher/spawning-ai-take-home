@@ -6,6 +6,7 @@ import CartModal from './CartModal.js'
 
 import Button from 'react-bootstrap/Button'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {

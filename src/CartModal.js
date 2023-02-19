@@ -1,7 +1,12 @@
 import Modal from 'react-bootstrap/Modal'
 
 const CartModal = ({cartItems}) => {
-  console.log('cartItems...', {cartItems})
+  const cartTotal = cartItems.reduce(
+    (acc, item) => {
+      return acc + parseFloat(item.price.substring(1))
+    },
+    0
+  )
 
   return (
     <div>
@@ -9,6 +14,10 @@ const CartModal = ({cartItems}) => {
         <Modal.Header>
           <Modal.Title>Cart</Modal.Title>
         </Modal.Header>
+
+        <Modal.Body>
+          total: ${cartTotal}
+        </Modal.Body>
       </Modal.Dialog>
     </div>
   )
