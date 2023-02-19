@@ -17,7 +17,8 @@ function App() {
   const [renderCart, setRenderCart] = useState(false)
   const [cart, setCart] = useState([])
 
-  const [productQuery, setProductQuery] = useState('');
+  const [productQuery, setProductQuery] = useState('')
+  const [isFiltering, setIsFiltering] = useState(false)
 
   useEffect(() => {
     setRenderedProducts(products.slice(0, renderCount))
@@ -30,7 +31,8 @@ function App() {
   const hideCart = () => setRenderCart(false)
 
   const filterProducts = () => {
-    console.log('filtering products...', {productQuery})
+    setIsFiltering(true)
+    setRenderedProducts(products.filter(product => product.name.toLowerCase().includes(productQuery)))
   }
 
   return (
@@ -48,6 +50,12 @@ function App() {
         queryVal={productQuery}
         filterProducts={filterProducts}
       />
+      {isFiltering ? (
+        <div>
+          searching for products that contain: '{productQuery}'
+        </div>  
+      ): null
+    }
       {
         renderedProducts.map(productData => {
           return (
