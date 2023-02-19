@@ -20,10 +20,18 @@ const CartModal = ({
 
         </Modal.Header>
 
-        <Modal.Body>
-          <div>number of items: {cartItems.length}</div>
-          <div>total: ${cartTotal}</div>
-        </Modal.Body>
+        {
+          cartItems.length ? (
+            <Modal.Body>
+              <div>number of items: {cartItems.length}</div>
+              <div>total: ${cartTotal}</div>
+            </Modal.Body>
+          ) : (
+            <Modal.Body>
+              Your shopping cart is empty!
+            </Modal.Body>
+          )
+        }
 
         <Modal.Footer>
           <Button onClick={handleClose}>
