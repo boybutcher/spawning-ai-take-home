@@ -26,9 +26,11 @@ function App() {
     setCart([...cart, product])
   }
 
+  const hideCart = () => setRenderCart(false)
+
   return (
     <div className="App">
-      {renderCart ? <CartModal cartItems={cart} /> : null}
+      {renderCart ? <CartModal cartItems={cart} handleClose={hideCart} /> : null}
       <Button onClick={() => setRenderCart(true)}>
         cart ({cart.length} items)
       </Button>
