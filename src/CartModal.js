@@ -17,10 +17,12 @@ const CartModal = ({
       <Modal.Dialog>
         <Modal.Header>
           <Modal.Title>Cart</Modal.Title>
+
         </Modal.Header>
 
         <Modal.Body>
-          total: ${cartTotal}
+          <div>number of items: {cartItems.length}</div>
+          <div>total: ${cartTotal}</div>
         </Modal.Body>
 
         <Modal.Footer>
