@@ -1,4 +1,7 @@
+import products from './constants/products.json'
 import './App.css';
+
+console.log(products)
 
 function App() {
   return (
