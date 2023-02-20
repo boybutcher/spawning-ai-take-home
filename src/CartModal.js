@@ -13,7 +13,7 @@ const CartModal = ({
   )
 
   return (
-    <div>
+    <Modal show>
       <Modal.Dialog>
         <Modal.Header>
           <Modal.Title>Cart</Modal.Title>
@@ -39,7 +39,7 @@ const CartModal = ({
           </Button>
         </Modal.Footer>
       </Modal.Dialog>
-    </div>
+    </Modal>
   )
 }
 
