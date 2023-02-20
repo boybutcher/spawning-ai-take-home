@@ -1,1 +1,16 @@
+.headerBar {
+  width: 100%;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.headerBarTitle {
+  margin: 0 20px;
+  font-size: 20px;
+}
+
+.headerBarCart {
+  margin: 0 20px;
+}

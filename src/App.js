@@ -43,14 +43,25 @@ function App() {
 
   return (
     <div className="App">
-      {renderCart ? (
-        <CartModal
-          cartItems={cart}
-          handleClose={hideCart}
-        />) : null}
-      <Button onClick={() => setRenderCart(true)}>
-        cart ({cart.length} items)
-      </Button>
+      {
+        renderCart ? (
+          <CartModal
+            cartItems={cart}
+            handleClose={hideCart}
+          />
+        ) : null
+      }
+      <div className='headerBar'>
+        <div className='headerBarTitle'>
+          Spawning Take Home Assignment
+        </div>
+        <Button
+          className='headerBarCart'
+          onClick={() => setRenderCart(true)}
+        >
+          cart ({cart.length} items)
+        </Button>
+      </div>
       <SearchBar
         updateQuery={setProductQuery}
         queryVal={productQuery}
