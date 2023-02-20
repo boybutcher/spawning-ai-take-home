@@ -4,13 +4,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  top: 0px;
+  background: white;
+  z-index: 1;
 }
 
 .headerBarTitle {
   margin: 0 20px;
   font-size: 20px;
+  cursor: default;
 }
 
 .headerBarCart {
   margin: 0 20px;
+}
+
+.appBody {
+  margin: 80px;
+}
+
+.productsGridWrapper {
+  justify-content: center;
+}
+
+.productsGrid {
+  display: flex;
+  flex-wrap: wrap;
 }

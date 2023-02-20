@@ -42,7 +42,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="app">
       {
         renderCart ? (
           <CartModal
@@ -51,6 +51,7 @@ function App() {
           />
         ) : null
       }
+
       <div className='headerBar'>
         <div className='headerBarTitle'>
           Spawning Take Home Assignment
@@ -62,31 +63,36 @@ function App() {
           cart ({cart.length} items)
         </Button>
       </div>
-      <SearchBar
-        updateQuery={setProductQuery}
-        queryVal={productQuery}
-        filterProducts={filterProducts}
-        cancelFilterProducts={cancelFilterProducts}
-        isFiltering={isFiltering}
-      />
-      {
-        isFiltering ? (
-          <div>
-            searching for products that contain: '{productQuery}'
-          </div>  
-        ): null
-      }
-      <div className='productsGrid'>
+      
+      <div className='appBody'>
+        <SearchBar
+          updateQuery={setProductQuery}
+          queryVal={productQuery}
+          filterProducts={filterProducts}
+          cancelFilterProducts={cancelFilterProducts}
+          isFiltering={isFiltering}
+        />
         {
-          renderedProducts.map(productData => {
-            return (
-              <ProductTile
-                productData={productData}
-                addItemToCart={addItemToCart}
-              />
-            )
-          })
+          isFiltering ? (
+            <div>
+              searching for products that contain: '{productQuery}'
+            </div>  
+          ): null
         }
+        <div className='productsGridWrapper'>
+          <div className='productsGrid'>
+            {
+              renderedProducts.map(productData => {
+                return (
+                  <ProductTile
+                    productData={productData}
+                    addItemToCart={addItemToCart}
+                  />
+                )
+              })
+            }
+          </div>
+        </div>
       </div>
     </div>
   );

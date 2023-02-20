@@ -1,4 +1,5 @@
 import Button from 'react-bootstrap/Button'
+import './SearchBar.css';
 
 const SearchBar = ({
   updateQuery,
@@ -8,7 +9,7 @@ const SearchBar = ({
   isFiltering,
 }) => {
   return (
-    <div>
+    <div className='searchBar'>
       <input
         type='text'
         placeholder='search for products'
@@ -16,12 +17,14 @@ const SearchBar = ({
         value={queryVal}
       />
       <Button
+        className='searchBarButton'
         disabled={!queryVal}
         onClick={filterProducts}
       >
         search
       </Button>
       <Button
+        className='searchBarButton'
         disabled={!isFiltering}
         onClick={cancelFilterProducts}
       >

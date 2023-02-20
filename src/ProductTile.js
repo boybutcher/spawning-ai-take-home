@@ -1,8 +1,7 @@
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Image from 'react-bootstrap/Image'
+
+import './ProductTile.css';
 
 const ProductTile = ({
   productData,
@@ -12,32 +11,27 @@ const ProductTile = ({
   const {
     image,
     name,
+    category,
     price,
   } = productData;
 
   return(
-    <Container>
-      <Row>
+    <div className='productTile'>
+      <div>
+        <img className='productThumbnail' src={image} />
+      </div>
+      <div className='productInfo'>
         <div>
-          <Image src={image} />
+          {name} - {category}
         </div>
-      </Row>
-      <Row>
-        <Col>
-          <div>
-            {name}
-          </div>
-        </Col>
-        <Col>
-          <div>
-            {price}
-          </div>
-        </Col>
-      </Row>
-      <Row>
+        <div>
+          {price}
+        </div>
+      </div>
+      <div>
         <Button onClick={addItemToCart(productData)}>add to cart</Button>
-      </Row>
-    </Container>
+      </div>
+    </div>
   )
 }
 
