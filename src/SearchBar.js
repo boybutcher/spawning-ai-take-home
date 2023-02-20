@@ -5,6 +5,7 @@ const SearchBar = ({
   queryVal,
   filterProducts,
   cancelFilterProducts,
+  isFiltering,
 }) => {
   return (
     <div>
@@ -14,9 +15,14 @@ const SearchBar = ({
         onChange={(e) => updateQuery(e.target.value)}
         value={queryVal}
       />
-      <Button onClick={filterProducts}>search</Button>
       <Button
         disabled={!queryVal}
+        onClick={filterProducts}
+      >
+        search
+      </Button>
+      <Button
+        disabled={!isFiltering}
         onClick={cancelFilterProducts}
       >
         clear

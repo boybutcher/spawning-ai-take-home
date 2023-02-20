@@ -21,8 +21,7 @@ function App() {
   const [isFiltering, setIsFiltering] = useState(false)
 
   useEffect(() => {
-    // setRenderedProducts(products.slice(0, renderCount))
-    setRenderedProducts(products)
+    setRenderedProducts(products.slice(0, renderCount))
   }, [])
 
   const addItemToCart = (product) => () => {
@@ -39,7 +38,7 @@ function App() {
   const cancelFilterProducts = () => {
     setProductQuery('')
     setIsFiltering(false)
-    setRenderedProducts(products)
+    setRenderedProducts(products.slice(0, renderCount))
   }
 
   return (
@@ -57,6 +56,7 @@ function App() {
         queryVal={productQuery}
         filterProducts={filterProducts}
         cancelFilterProducts={cancelFilterProducts}
+        isFiltering={isFiltering}
       />
       {
         isFiltering ? (
