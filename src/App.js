@@ -75,7 +75,7 @@ function App() {
         {
           isFiltering ? (
             <div>
-              searching for products that contain: '{productQuery}'
+              displaying {renderedProducts.length} products that contain: '{productQuery}'
             </div>  
           ): null
         }
