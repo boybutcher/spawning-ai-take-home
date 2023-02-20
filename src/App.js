@@ -21,7 +21,8 @@ function App() {
   const [isFiltering, setIsFiltering] = useState(false)
 
   useEffect(() => {
-    setRenderedProducts(products.slice(0, renderCount))
+    // setRenderedProducts(products.slice(0, renderCount))
+    setRenderedProducts(products)
   }, [])
 
   const addItemToCart = (product) => () => {
@@ -33,6 +34,12 @@ function App() {
   const filterProducts = () => {
     setIsFiltering(true)
     setRenderedProducts(products.filter(product => product.name.toLowerCase().includes(productQuery)))
+  }
+
+  const cancelFilterProducts = () => {
+    setProductQuery('')
+    setIsFiltering(false)
+    setRenderedProducts(products)
   }
 
   return (
@@ -49,23 +56,27 @@ function App() {
         updateQuery={setProductQuery}
         queryVal={productQuery}
         filterProducts={filterProducts}
+        cancelFilterProducts={cancelFilterProducts}
       />
-      {isFiltering ? (
-        <div>
-          searching for products that contain: '{productQuery}'
-        </div>  
-      ): null
-    }
       {
-        renderedProducts.map(productData => {
-          return (
-            <ProductTile
-              productData={productData}
-              addItemToCart={addItemToCart}
-            />
-          )
-        })
+        isFiltering ? (
+          <div>
+            searching for products that contain: '{productQuery}'
+          </div>  
+        ): null
       }
+      <div className='productsGrid'>
+        {
+          renderedProducts.map(productData => {
+            return (
+              <ProductTile
+                productData={productData}
+                addItemToCart={addItemToCart}
+              />
+            )
+          })
+        }
+      </div>
     </div>
   );
 }
